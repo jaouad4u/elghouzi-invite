@@ -9,20 +9,20 @@
 html,body{margin:0;min-height:100%;background:#292929}
 body{display:flex;justify-content:center;padding:22px 8px}
 .invitation{position:relative;width:min(100%,760px);line-height:0}
-.invitation img{display:block;width:100%;height:auto}
+.invitation img{display:block;width:100%;height:auto;pointer-events:none}
 .rsvp-link{
  position:absolute;
- left:45.2%;
- top:55.5%;
- width:52.7%;
- height:11.7%;
- border-radius:20px;
- z-index:5;
+ left:45.0%;
+ top:55.0%;
+ width:54.0%;
+ height:12.5%;
+ display:block;
+ z-index:9999;
  cursor:pointer;
- text-indent:-9999px;
- overflow:hidden;
+ background:rgba(0,0,0,0.001);
+ border-radius:20px;
 }
-.rsvp-link:focus{outline:3px solid #fff;outline-offset:3px}
+.rsvp-link:focus{outline:3px solid white;outline-offset:2px}
 @media(max-width:520px){body{padding:0}.rsvp-link{border-radius:12px}}
 </style>
 </head>
@@ -31,8 +31,8 @@ body{display:flex;justify-content:center;padding:22px 8px}
  <img src="invitation.png" alt="Master's Graduation Celebration invitation">
  <a class="rsvp-link"
     href="https://form.jotform.com/262794520723056"
-    target="_blank" rel="noopener"
-    aria-label="Please RSVP — click here to confirm your attendance">RSVP</a>
+    aria-label="Please RSVP — confirm your attendance"
+    title="Click to RSVP"></a>
 </div>
 </body>
 </html>
