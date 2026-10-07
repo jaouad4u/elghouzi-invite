@@ -2,181 +2,75 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Master's Graduation Celebration</title>
 <style>
-  *{box-sizing:border-box}
-  html,body{
-    margin:0;
-    min-height:100%;
-    background:#2b2b2b;
-    font-family:Arial,Helvetica,sans-serif;
-  }
-  body{
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding:24px 10px;
-  }
-  .invite-wrap{
-    position:relative;
-    width:min(100%,760px);
-    animation:fadeIn .7s ease both;
-  }
-  .invite{
-    display:block;
-    width:100%;
-    height:auto;
-    border-radius:2px;
-  }
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#292929}
+body{display:flex;justify-content:center;padding:24px 8px}
+.invite{position:relative;width:min(100%,760px);line-height:0}
+.invite img{display:block;width:100%;height:auto}
 
-  /* Clickable RSVP button positioned where your arrow indicates */
-  .rsvp-overlay{
-    position:absolute;
-    left:52.5%;
-    top:39.7%;
-    width:43.5%;
-    min-height:8.9%;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 14px;
-    border-radius:18px;
-    border:3px solid #dba92d;
-    background:
-      linear-gradient(180deg,#0b315f 0%,#031d42 58%,#00152f 100%);
-    box-shadow:
-      inset 0 0 0 2px rgba(255,215,105,.25),
-      0 0 14px rgba(255,195,55,.65),
-      0 7px 16px rgba(0,0,0,.40);
-    text-decoration:none;
-    transform-origin:center;
-    transition:transform .18s ease, filter .18s ease;
-    animation:pulse 2.4s ease-in-out infinite;
-  }
-  .rsvp-overlay:hover{
-    transform:scale(1.03);
-    filter:brightness(1.08);
-  }
-  .rsvp-overlay:active{
-    transform:scale(.98);
-  }
+/* Cover the original lower RSVP artwork with the surrounding gold area */
+.cover{
+ position:absolute;left:44%;top:73.3%;width:54%;height:12%;
+ background:linear-gradient(135deg,#f4d38c 0%,#f8e0aa 48%,#e8bc62 100%);
+ border-radius:8px;
+}
 
-  .icon{
-    flex:0 0 44px;
-    width:44px;
-    height:44px;
-    border:3px solid #efbd3a;
-    border-radius:8px;
-    position:relative;
-  }
-  .icon:before,.icon:after{
-    content:"";
-    position:absolute;
-    top:-8px;
-    width:7px;
-    height:14px;
-    border-radius:4px;
-    background:#efbd3a;
-  }
-  .icon:before{left:7px}
-  .icon:after{right:7px}
-  .check{
-    position:absolute;
-    left:10px;
-    top:14px;
-    width:19px;
-    height:10px;
-    border-left:5px solid #efbd3a;
-    border-bottom:5px solid #efbd3a;
-    transform:rotate(-45deg);
-  }
+/* The ONLY clickable RSVP button — placed in the blank area above event details */
+.rsvp{
+ position:absolute;
+ left:51.2%;
+ top:41.2%;
+ width:43.8%;
+ height:9.2%;
+ display:flex;
+ align-items:center;
+ gap:9px;
+ padding:8px 12px;
+ border:3px solid #e5b83e;
+ border-radius:18px;
+ background:linear-gradient(180deg,#0a315f,#031d43 62%,#00162f);
+ box-shadow:inset 0 0 0 2px #f6d16a44,0 0 12px #e4b53899,0 6px 12px #0007;
+ text-decoration:none;
+ z-index:3;
+ line-height:1;
+ transition:.18s ease;
+}
+.rsvp:hover{transform:scale(1.025);filter:brightness(1.08)}
+.cal{flex:0 0 42px;width:42px;height:42px;border:3px solid #efbd3a;border-radius:7px;position:relative}
+.cal:before,.cal:after{content:"";position:absolute;top:-8px;width:7px;height:13px;border-radius:4px;background:#efbd3a}
+.cal:before{left:6px}.cal:after{right:6px}
+.tick{position:absolute;left:10px;top:13px;width:19px;height:10px;border-left:5px solid #efbd3a;border-bottom:5px solid #efbd3a;transform:rotate(-45deg)}
+.txt{flex:1;text-align:center;min-width:0}
+.big{display:block;color:#f4c75a;font-family:Georgia,'Times New Roman',serif;font-size:clamp(14px,2.65vw,27px);font-weight:700;white-space:nowrap}
+.small{display:block;color:#fff;font:700 clamp(7px,1.35vw,14px)/1.1 Arial,sans-serif;margin-top:5px}
+.arrow{color:#f4c75a;font:700 clamp(22px,3.5vw,38px)/1 Georgia,serif}
 
-  .copy{
-    flex:1;
-    min-width:0;
-    text-align:center;
-    line-height:1.05;
-  }
-  .title{
-    display:block;
-    color:#f6ca62;
-    font-family:Georgia,"Times New Roman",serif;
-    font-weight:700;
-    font-size:clamp(13px,2.6vw,27px);
-    letter-spacing:.02em;
-    white-space:nowrap;
-  }
-  .sub{
-    display:block;
-    margin-top:5px;
-    color:#fff;
-    font-weight:700;
-    font-size:clamp(7px,1.45vw,14px);
-    letter-spacing:.03em;
-    line-height:1.15;
-  }
-  .chev{
-    color:#f6ca62;
-    font-family:Georgia,serif;
-    font-size:clamp(22px,3.8vw,40px);
-    line-height:1;
-    margin-left:2px;
-  }
-
-  @keyframes fadeIn{
-    from{opacity:0;transform:translateY(12px)}
-    to{opacity:1;transform:none}
-  }
-  @keyframes pulse{
-    0%,100%{box-shadow:inset 0 0 0 2px rgba(255,215,105,.25),0 0 12px rgba(255,195,55,.45),0 7px 16px rgba(0,0,0,.40)}
-    50%{box-shadow:inset 0 0 0 2px rgba(255,215,105,.30),0 0 22px rgba(255,195,55,.85),0 7px 16px rgba(0,0,0,.40)}
-  }
-
-  @media (max-width:520px){
-    body{padding:8px 0}
-    .rsvp-overlay{
-      left:51.7%;
-      top:39.9%;
-      width:45%;
-      min-height:9.2%;
-      padding:6px 8px;
-      border-width:2px;
-      border-radius:12px;
-      gap:6px;
-    }
-    .icon{
-      flex-basis:28px;
-      width:28px;height:28px;
-      border-width:2px;
-      border-radius:5px;
-    }
-    .icon:before,.icon:after{top:-6px;width:5px;height:10px}
-    .icon:before{left:4px}.icon:after{right:4px}
-    .check{
-      left:6px;top:9px;width:13px;height:7px;
-      border-left-width:3px;border-bottom-width:3px;
-    }
-    .sub{margin-top:3px}
-  }
+@media(max-width:520px){
+ body{padding:0}
+ .rsvp{left:50.5%;top:41.1%;width:45%;height:9.4%;padding:5px 7px;gap:5px;border-width:2px;border-radius:11px}
+ .cal{flex-basis:27px;width:27px;height:27px;border-width:2px;border-radius:4px}
+ .cal:before,.cal:after{top:-5px;width:4px;height:9px}
+ .cal:before{left:4px}.cal:after{right:4px}
+ .tick{left:6px;top:8px;width:12px;height:7px;border-left-width:3px;border-bottom-width:3px}
+ .small{margin-top:2px}
+}
 </style>
 </head>
 <body>
-  <div class="invite-wrap">
-    <img class="invite" src="invitation.png" alt="Master's Graduation Celebration invitation">
-
-    <a class="rsvp-overlay"
-       href="https://form.jotform.com/262794520723056"
-       target="_blank"
-       rel="noopener"
-       aria-label="Please RSVP and confirm your attendance">
-      <span class="icon"><span class="check"></span></span>
-      <span class="copy">
-        <span class="title">PLEASE RSVP</span>
-        <span class="sub">CLICK HERE TO CONFIRM<br>YOUR ATTENDANCE</span>
-      </span>
-      <span class="chev">›</span>
-    </a>
-  </div>
+<div class="invite">
+ <img src="invitation.png" alt="Master's Graduation Celebration invitation">
+ <div class="cover" aria-hidden="true"></div>
+ <a class="rsvp" href="https://form.jotform.com/262794520723056" target="_blank" rel="noopener">
+   <span class="cal"><span class="tick"></span></span>
+   <span class="txt">
+     <span class="big">PLEASE RSVP</span>
+     <span class="small">CLICK HERE TO CONFIRM<br>YOUR ATTENDANCE</span>
+   </span>
+   <span class="arrow">›</span>
+ </a>
+</div>
 </body>
 </html>
