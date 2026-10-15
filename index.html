@@ -1,38 +1,75 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Master's Graduation Celebration</title>
+<title>You're invited — Jaouad's Graduation Celebration</title>
+<meta name="description" content="Join me to celebrate my master's graduation on November 28, 2026, 3–8 PM. Tap to open your invitation and RSVP.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="You're invited! Jaouad's Graduation Celebration 🎓">
+<meta property="og:description" content="November 28, 2026 · 3–8 PM · Ashburn, VA. Open your invitation and RSVP.">
+<meta property="og:url" content="https://jaouad4u.github.io/elghouzi-invite/">
+<meta property="og:image" content="https://jaouad4u.github.io/elghouzi-invite/invitation-card.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1056">
+<meta property="og:image:height" content="1489">
+<meta property="og:image:alt" content="Jaouad's navy and gold graduation invitation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jaouad4u.github.io/elghouzi-invite/invitation-card.png">
+<meta name="theme-color" content="#071729">
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#292929}
-body{display:flex;justify-content:center;padding:22px 8px}
-.invitation{position:relative;width:min(100%,760px);line-height:0}
+html,body{margin:0;min-height:100%;background:#071729;color:#f9e9bb}
+body{font-family:Georgia,serif;padding:20px 12px 32px}
+main{width:min(100%,760px);margin:auto}
+.cover{display:none;text-align:center;min-height:calc(100svh - 52px);align-content:center;padding:24px 0}
+.js .cover{display:block}
+.cover[hidden],.invitation[hidden]{display:none}
+.eyebrow{font:12px/1.5 system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#dcb861}
+h1{font-size:clamp(30px,7vw,48px);font-weight:400;line-height:1.15;margin:14px 0 12px}
+.details{font:15px/1.6 system-ui,sans-serif;color:#d2c5a4}
+.envelope{display:block;position:relative;width:min(92%,430px);aspect-ratio:1.55;margin:48px auto 28px;border:1px solid #b58c37;border-radius:8px;background:linear-gradient(145deg,#173652,#071729);box-shadow:0 22px 65px #0008;cursor:pointer;perspective:900px;color:#f9e9bb}
+.envelope::before{content:"";position:absolute;inset:0;background:linear-gradient(155deg,#d4aa50,#f7df9c);clip-path:polygon(0 0,100% 0,50% 60%);transform-origin:top;transition:transform .65s ease;z-index:2}
+.envelope::after{content:"";position:absolute;inset:0;background:linear-gradient(25deg,#0a1c2d,#23425c);clip-path:polygon(0 0,50% 59%,100% 0,100% 100%,0 100%);border-radius:8px}
+.seal{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);z-index:3;border-radius:50%;height:62px;width:62px;display:grid;place-items:center;background:linear-gradient(135deg,#fce8a8,#b78322);border:3px double #9e711e;color:#182337;font:bold 26px Georgia;box-shadow:0 3px 12px #0005;transition:opacity .25s}
+.opening .envelope::before{transform:rotateX(180deg)}
+.opening .seal{opacity:0}
+.envelope:focus-visible{outline:3px solid white;outline-offset:8px}
+.tap{font:14px system-ui,sans-serif;letter-spacing:.08em}
+.invitation{position:relative;line-height:0;animation:reveal .65s ease both}
 .invitation img{display:block;width:100%;height:auto;pointer-events:none}
-.rsvp-link{
- position:absolute;
- left:46.2%;
- top:74.2%;
- width:50.3%;
- height:10.5%;
- display:block;
- z-index:9999;
- cursor:pointer;
- background:rgba(0,0,0,0.001);
- border-radius:20px;
-}
-.rsvp-link:focus{outline:3px solid white;outline-offset:2px}
-@media(max-width:520px){body{padding:0}.rsvp-link{border-radius:12px}}
+.rsvp-link{position:absolute;left:46.2%;top:74.2%;width:50.3%;height:10.5%;display:block;cursor:pointer;border-radius:20px}
+.rsvp-link:focus-visible{outline:3px solid white;outline-offset:2px}
+.footer{text-align:center;font:14px/1.6 system-ui,sans-serif;margin:20px 0 0}
+.footer a{color:#f9dc89;text-underline-offset:4px}
+@keyframes reveal{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){body{padding:0 0 24px}.cover{padding:24px 16px}.rsvp-link{border-radius:12px}}
+@media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="invitation">
- <img src="invitation.png" alt="Master's Graduation Celebration invitation">
- <a class="rsvp-link"
-    href="https://form.jotform.com/262794520723056"
-    aria-label="Please RSVP — confirm your attendance"
-    title="Click to RSVP"></a>
+<main>
+<section class="cover" id="cover" aria-label="Open your invitation">
+<p class="eyebrow">A special invitation for you</p>
+<h1>Let's celebrate<br>a new chapter.</h1>
+<p class="details">Jaouad's Master's Graduation<br>November 28, 2026 · 3–8 PM</p>
+<button class="envelope" id="open" aria-label="Open Jaouad's graduation invitation" aria-controls="invitation"><span class="seal" aria-hidden="true">J</span></button>
+<p class="tap">Tap the envelope to open</p>
+</section>
+<div id="invitation" class="invitation">
+<img src="invitation-card.png" width="1056" height="1489" alt="Jaouad's master's graduation celebration. Saturday, November 28, 2026, 3–8 PM. Clubhouse, 21851 Blueriske Cir, Ashburn, VA 20148. Lunch and sweets. RSVP below.">
+<a class="rsvp-link" id="rsvp" href="https://form.jotform.com/262794520723056" aria-label="RSVP — confirm your attendance" title="Click to RSVP"></a>
 </div>
+<p class="footer" id="footer"><a href="https://form.jotform.com/262794520723056">Confirm your attendance →</a></p>
+</main>
+<script>
+const cover=document.getElementById('cover'),invitation=document.getElementById('invitation'),footer=document.getElementById('footer'),openButton=document.getElementById('open');
+document.documentElement.classList.add('js');
+invitation.hidden=true;footer.hidden=true;
+openButton.addEventListener('click',()=>{
+openButton.disabled=true;cover.classList.add('opening');
+setTimeout(()=>{cover.hidden=true;invitation.hidden=false;footer.hidden=false;window.scrollTo(0,0);document.getElementById('rsvp').focus({preventScroll:true});},window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:650);
+});
+</script>
 </body>
 </html>
